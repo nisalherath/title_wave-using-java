@@ -28,5 +28,4 @@ function waveTitleEffect() {
   
     setInterval(updateTitle, 400);
 }
-
 waveTitleEffect();
