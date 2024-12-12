@@ -1,32 +1,47 @@
 function waveTitleEffect() {
-    var baseTitle = "Nisal"; // The constant part of the title
-    var waveText = "Herath"; // The text that animates in the wave effect
-    var title = baseTitle + waveText; // Full title to work with
+    // The base title to display at all times
+    var baseTitle = "Nisal";
+    // The additional text to "wave" into the title
+    var waveText = "Herath";
+    // Combined full title to work with
+    var title = baseTitle + waveText;
+    // Holds the current title being displayed in the wave effect
     var waveTitle = title;
-    var i = 0; // Tracks the current position in the animation
-    var forward = true; // Direction of animation: true for forward, false for backward
+    // Index tracker for the current position in the wave effect
+    var i = 0;
+    // Direction tracker: true for forward, false for backward
+    var forward = true;
 
+    // Function to update the title for the wave effect
     function updateTitle() {
         if (forward) {
+            // Expanding the title by one character at a time
             if (i < title.length) {
-                document.title = waveTitle.substring(0, i + 1); // Expand the title
-                i++;
+                // Display the substring of the title up to the current index
+                document.title = waveTitle.substring(0, i + 1);
+                i++; // Move the index forward
             } else {
-                forward = false; // Reverse direction when full title is reached
-                i--;
+                // Reverse direction once the full title is displayed
+                forward = false;
+                i--; // Step back one character
             }
         } else {
+            // Shrinking the title back down to the base title
             if (i >= baseTitle.length) {
-                document.title = waveTitle.substring(0, i); // Shrink the title
-                i--;
+                // Display the substring of the title up to the current index
+                document.title = waveTitle.substring(0, i);
+                i--; // Move the index backward
             } else {
-                forward = true; // Reverse direction when base title is reached
-                i++;
+                // Reverse direction once the base title is reached
+                forward = true;
+                i++; // Start expanding again
             }
         }
     }
 
-    setInterval(updateTitle, 400); // Updates the title every 400ms
+    // Set an interval to repeatedly update the title every 400ms
+    setInterval(updateTitle, 400);
 }
 
-waveTitleEffect(); // Starts the title wave effect
+// Start the title wave effect
+waveTitleEffect();
